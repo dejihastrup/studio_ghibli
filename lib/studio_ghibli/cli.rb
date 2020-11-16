@@ -18,8 +18,7 @@ class StudioGhibli::CLI
         puts "To exit the Studio Ghibli World, enter 'exit.'"
         puts ""
 
-        input = gets.strip.downcase 
-        intro(input)
+        intro
     end
 
     def list_films
@@ -34,8 +33,8 @@ class StudioGhibli::CLI
         puts "Which film would you like to learn about?" 
         puts "Please enter (1-20) or 'exit' to leave the Studio Ghibli World."
         puts ""
-        input = gets.strip.downcase
-        film_choice(input)
+
+        film_choice
     end
 
     def film_info(input)
@@ -59,8 +58,7 @@ class StudioGhibli::CLI
         end
         puts ""
 
-        input = gets.strip
-        info(input)
+        info
     end     
 
     def more_info
@@ -70,8 +68,7 @@ class StudioGhibli::CLI
         puts "2.    I want to learn about a different film."
         puts ""
 
-        input = gets.strip.downcase
-        more_info_check(input)
+        more_info_check
     end
 
     def exit_world
@@ -87,11 +84,12 @@ class StudioGhibli::CLI
 
     #input check
 
-    def intro(answer)
+    def intro
+        input = gets.strip.downcase
         
-        if answer == 'films'
+        if input == 'films'
             list_films
-        elsif answer == 'exit'
+        elsif input == 'exit'
             exit_world
         else 
             error = 1
@@ -99,10 +97,12 @@ class StudioGhibli::CLI
         end
     end
 
-    def film_choice(answer)
-        if answer.to_i.between?(1, 20)
-            film_info(answer)
-        elsif answer == 'exit'
+    def film_choice
+        input = gets.strip.downcase
+
+        if input.to_i.between?(1, 20)
+            film_info(input)
+        elsif input == 'exit'
             exit_world
         else 
             error = 2
@@ -111,7 +111,9 @@ class StudioGhibli::CLI
     end 
 
 
-    def info(input)
+    def info
+        input = gets.strip.downcase
+
         case input
         when "1"
             puts "Here's a summary of what #{self.film.title} is about:"
@@ -147,7 +149,8 @@ class StudioGhibli::CLI
         end
     end
 
-    def more_info_check(input)
+    def more_info_check
+        input = gets.strip.downcase
         case input
         when '1'
             choose_info
@@ -193,20 +196,16 @@ class StudioGhibli::CLI
         case version
         when 1
             message("films")
-            input = gets.strip.downcase 
-            intro(input)
+            intro
         when 2
             message("(1-20)")
-            input = gets.strip.downcase 
-            film_choice(input)
+            film_choice
         when 3
             message("(1-5)")
-            input = gets.strip.downcase 
-            info(input)
+            info
         when 4
             message("(1-2)")
-            input = gets.strip.downcase 
-            more_info_check(input)
+            more_info_check
         end
     end
 

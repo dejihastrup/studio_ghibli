@@ -82,6 +82,7 @@ class StudioGhibli::CLI
         exit
     end
 
+
     #input check
 
     def intro
@@ -109,7 +110,6 @@ class StudioGhibli::CLI
             error_message(error)
         end
     end 
-
 
     def info
         input = gets.strip.downcase
@@ -185,6 +185,7 @@ class StudioGhibli::CLI
         end
     end
 
+
     #error_message
 
     def message(stage)
@@ -209,8 +210,6 @@ class StudioGhibli::CLI
         end
     end
 
-
-    
 
     #art
 
